@@ -1,0 +1,36 @@
+# Ignore the "node_modules" folder
+node_modules/
+
+# Ignore all Json
+*.json
+
+*.txt
+*.env
+*.log
+
+*.config.js
+
+views/addProduct.ejs
+views/orders.ejs
+views/product.ejs
+views/products.ejs
+views/reset-password.ejs
+views/search.ejs
+views/updateProduct.ejs
+views/user.ejs
+
+src/middleware/pvtMiddleware.js
+src/routes/authenticate.js
+src/routes/mail.js
+src/routes/product.js
+src/routes/user.js
+
+*.html
+
+public/images
+
+public/js/forgotPassword.js
+public/js/login.js
+public/js/product.js
+public/js/product.js
+public/js/signup.js

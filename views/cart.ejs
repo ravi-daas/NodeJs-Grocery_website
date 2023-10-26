@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+
+  <header>
+    <nav class="rounded bg-transparent flex justify-between py-2 px-1 top-2">
+      <div class="mr-2"><a href="/">VDA</a></div>
+      <div class="ml-2 rounded border-solid border-2 border-emerald-600 bg-emerald-600 px-1 py-0.5">
+        <!-- Add the required Bootstrap and Tailwind CSS classes to the image -->
+        <img src="images/person-circle.svg" class="w-6 mt-1 cursor-pointer" alt="" id="userImage">
+        <!-- The dropdown menu container -->
+        <div class="hidden absolute right-1 top-12 w-32 flex-col bg-blue-50 p-2 rounded-md" id="dropdownMenu">
+          <div class="flex flex-row p-1"><img src="images/person-circle.svg" class="pr-2" alt=""><a
+              href="/profile">Profile</a></div>
+          <div class="flex flex-row p-1"><img src="images/cart.svg" class="pr-2" alt=""><a href="/cart">My
+              Cart</a></div>
+          <div class="flex flex-row p-1"><img src="images/bag-check.svg" class="pr-2" alt=""><a href="/orders">My
+              Orders</a></div>
+          <div class="flex flex-row p-1"><img src="images/logout.svg" class="pr-2" alt=""><a href="/logout">Logout</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="text-4xl font-bold mx-2 my-4 text-center">My Cart</div>
+
+  <% if(iscart){ %>
+
+    <div class="grid gap-3 grid-cols-4 max-[1100px]:grid-cols-1">
+      <!-- <div class="col-span-1 text-lg">
+        <div class="flex flex-row py-4 px-4">
+          <span>Delivery Address</span>
+          <img src="images/location.svg">
+          <span>
+            : <%=Address%>
+          </span>
+        </div>
+      </div> -->
+      <div class="col-span-2 flex flex-col">
+        <% products.forEach(product=> { %>
+
+          <% let totalprice=[]; totalprice[index]=product.totalPrice; %>
+
+            <div class="flex flex-row border-blue-600 m-2">
+              <div><img src="<%=product.image%>" class="w-60 h-44 mr-5 rounded-sm"></div>
+              <div class="flex flex-col justify-between py-1 px-2">
+                <span>
+                  <%=product.name%>
+                </span>
+                <span>₹<%=product.price%>/<%=product.unit%></span>
+              </div>
+              <div class="ml-20 py-1 px-2 flex flex-col justify-between">Quantity
+                <select name="<%=product.name%>" class="w-20 rounded-sm quantity">
+                  <option value="1" <%=values[index]==='1' ? 'selected' : '' %>> 1</option>
+                  <option value="2" <%=values[index]==='2' ? 'selected' : '' %>>2</option>
+                  <option value="3" <%=values[index]==='3' ? 'selected' : '' %>>3</option>
+                  <option value="4" <%=values[index]==='4' ? 'selected' : '' %>>4</option>
+                  <option value="5" <%=values[index]==='5' ? 'selected' : '' %>>5</option>
+                  <option value="6" <%=values[index]==='6' ? 'selected' : '' %>>6</option>
+                  <option value="7" <%=values[index]==='7' ? 'selected' : '' %>>7</option>
+                  <option value="8" <%=values[index]==='8' ? 'selected' : '' %>>8</option>
+                  <option value="9" <%=values[index]==='9' ? 'selected' : '' %>>9</option>
+                  <option value="10" <%=values[index]==='10' ? 'selected' : '' %>>10</option>
+                </select>
+                <div>
+                  <img src="images/trash.svg" name="<%=product.name%>"
+                    class="delete fill-current text-red-500 cursor-pointer">
+                </div>
+              </div>
+            </div>
+            <% index++; %>
+              <% }); %>
+      </div>
+
+
+      <div class="col-span-1">
+        <div>Total Price: 
+          <span id="tp" value="<%=totalPrice%>"><%=totalPrice%></span>
+        </div>
+        <button class="bg-transparent-900 border-4 p-1 border-zinc-900" id="submit">Checkout</button>
+      </div>
+    </div>
+
+    <% } else {%>
+
+      <div class="text-center text-lg pt-60">
+        <%=msg%>
+      </div>
+
+      <%}%>
+
+        <footer class="text-center mt-5 py-2 bg-dark text-lg">
+          &copy; 2023 VDA. All Rights Reserved VDA.
+        </footer>
+
+        <script src="js/cart.js"></script>
+</body>
+
+</html>
